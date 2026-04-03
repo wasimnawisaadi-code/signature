@@ -1,0 +1,150 @@
+/* CSS RESET */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { 
+  background: #02040a; 
+  display: flex; justify-content: center; align-items: center; 
+  min-height: 100vh; font-family: 'Outfit', sans-serif; 
+}
+
+/* ═══════════════════════════════════════════
+   BANNER CONTAINER
+═══════════════════════════════════════════ */
+.sig {
+  width: 600px;
+  height: 200px;
+  position: relative;
+  display: flex; flex-direction: row;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.08); /* Outer subtle rim */
+  background: #ffffff;
+}
+
+/* ── LEFT PANEL (NAVY BLUE) ── */
+.panel-left {
+  width: 250px;
+  background: rgb(0, 53, 96);
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 20px;
+  border-right: 2px solid #D4AF37; /* Elegant gold boundary */
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 8px 0 20px rgba(0,0,0,0.08); /* Shadow onto the white panel */
+}
+
+/* ── RIGHT PANEL (BRILLIANT WHITE) ── */
+.panel-right {
+  flex: 1;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* ── DECORATIONS ── */
+.mesh { 
+  position: absolute; inset: -20px; 
+  background-image: linear-gradient(rgba(212,175,55,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.09) 1px, transparent 1px); 
+  background-size: 35px 35px; 
+  animation: meshScroll 20s linear infinite; z-index: 0; 
+}
+@keyframes meshScroll { 0% { transform: translate(0,0); } 100% { transform: translate(35px,35px); } }
+
+/* ── STATIC COMPANY INFO (LEFT) ── */
+.static-company {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.static-company img {
+  width: 170px; height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+.company-sub {
+  color: rgba(255,255,255,0.8);
+  font-size: 8px; font-weight: 300;
+  text-align: center; text-transform: uppercase;
+  letter-spacing: 2.5px; line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   CAROUSEL SLIDES (RIGHT)
+═══════════════════════════════════════════ */
+.carousel { position: absolute; inset: 0; z-index: 5; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: row;
+  align-items: center; justify-content: flex-start;
+  padding: 0 34px; gap: 24px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  pointer-events: none;
+}
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.slide.exit { opacity: 0; transform: translateX(-15px); transition: opacity 0.45s ease, transform 0.45s ease; }
+
+/* ── LOGOS ── */
+.logo-wrap {
+  width: 90px; height: 90px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-wrap img {
+  max-width: 100%; max-height: 100%;
+  object-fit: contain;
+}
+
+/* ── TEXT ── */
+.slide-text {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 5px; flex: 1;
+}
+.lbl {
+  color: rgb(0, 53, 96); 
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.sub {
+  color: #64748b; 
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* ── HERO SLIDE (Slide 1) ── */
+.slide-hero { flex-direction: column; justify-content: center; align-items: flex-start; }
+.hero-title { 
+  color: rgb(0, 53, 96); font-size: 21px; font-weight: 800; 
+  text-transform: uppercase; letter-spacing: 1.5px; 
+  line-height: 1.1; margin-bottom: 6px;
+}
+.hero-title span { color: #D4AF37; } 
+.hero-desc { 
+  color: #64748b; font-size: 11.5px; font-weight: 400; 
+  line-height: 1.5; 
+}
+
+/* ── CONTROLS & DECOR ── */
+.ctrl {
+  position: absolute; bottom: 12px; right: 14px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #f1f5f9; border: 1px solid #e2e8f0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 30; transition: all 0.2s;
+}
+.ctrl:hover { background: #e2e8f0; transform: scale(1.05); }
+.ctrl svg { width: 10px; height: 10px; fill: rgb(0, 53, 96); }
+
+.watermark { 
+  position: absolute; top: 12px; right: 16px; 
+  color: #cbd5e1; font-size: 8px; font-weight: 700; 
+  letter-spacing: 2px; text-transform: uppercase; 
+  z-index: 10; pointer-events: none; 
+}
